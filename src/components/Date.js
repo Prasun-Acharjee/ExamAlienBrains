@@ -16,6 +16,8 @@ class Date extends React.Component{
     {
         console.log(this.props.location.state)
         const db = firebase.firestore();
+        if(this.state.subject!=="" && this.state.des!=="")
+        {
         db.collection("employee").doc(`${this.props.location.state}`).onSnapshot((res)=>{
             console.log(res.data().name)
             db.collection("requests").add({
@@ -29,7 +31,7 @@ class Date extends React.Component{
             })
             this.setState({popup:false,subject:"",des:""})
         })
-        
+    }
     }
     sendRequest=()=>
     {

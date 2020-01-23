@@ -17,8 +17,8 @@ class Login extends React.Component{
           const db=firebase.firestore();
           db.collection("employee").get().then((query)=>{
           query.forEach((doc)=>{
-                if(doc.data().name===this.state.name)
-                    if(doc.data().password==this.state.pass)
+                if(doc.data().name===this.state.name && this.state.name!=="")
+                    if(doc.data().password==this.state.pass && this.state.pass!=="")
                         if(doc.data().Admin)
                             this.setState({admin:true});
                         else
